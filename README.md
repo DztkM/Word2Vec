@@ -27,7 +27,7 @@ Similar to 'rabbit': ['rabbit', 'white', 'name', 'hush', 'kid']
 Similar to 'tea': ['tea', 'bread', 'pointing', 'telescope', 'week']
 Similar to 'hole': ['hole', 'passage', 'grunted', 'jumping', 'bat']
 
-rabbit - white + cat': ['cat', 'cheshire', 'dog', 'never', 'name']
+'rabbit' - 'white' + 'cat': ['cat', 'cheshire', 'dog', 'never', 'name']
 ```
 
 ### Without subsampling
@@ -42,7 +42,7 @@ Similar to 'rabbit': ['rabbit', 'white', 'hush', 'noticed', 'kid']
 Similar to 'tea': ['tea', 'conversation', 'ears', 'bread', 'a']
 Similar to 'hole': ['hole', 'passage', 'grunted', 'white', 'a']
 
-rabbit - white + cat': ['cat', 'our', 'usual', 'first', 'head']
+'rabbit' - 'white' + 'cat': ['cat', 'our', 'usual', 'first', 'head']
 ```
 
 ### Key Insight
