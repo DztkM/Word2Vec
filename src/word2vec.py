@@ -39,7 +39,7 @@ def load_and_test_model():
     print("\nSimilar to 'hole':", most_similar("hole", model, word2idx, idx2word))
 
     
-    print(analogy("king", "man", "girl", model, word2idx, idx2word))
+    print("\nRabbit-white+cat':", analogy("rabbit", "white", "cat", model, word2idx, idx2word))
 
     plot_embeddings_pca(model, word2idx, idx2word, num_words=50)
 
