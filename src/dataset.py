@@ -3,8 +3,9 @@ from collections import Counter
 
 
 class Word2VecDataset:
-    def __init__(self, text, window_size=2, max_vocab_size=None, min_freq=1):
+    def __init__(self, text, window_size=2, max_vocab_size=None, min_freq=1, subsample_t=1e-3):
         self.window_size = window_size
+        self.subsample_t = subsample_t
         
         tokens = text.lower().split()
         counter = Counter(tokens)
@@ -16,6 +17,13 @@ class Word2VecDataset:
             )
             tokens = [t for t in tokens if t in most_common]
 
+        counter = Counter(tokens)
+        total_count = len(tokens)
+
+        print(f"Before subsampling: {len(tokens)}")
+        tokens = self._subsample(tokens, counter, total_count)
+        print(f"After subsampling: {len(tokens)}")
+
         self.tokens = tokens
         
 
@@ -25,6 +33,18 @@ class Word2VecDataset:
         self.vocab_size = len(self.vocab)
 
         self.pairs = self._generate_pairs()
+
+
+    def _subsample(self, tokens, counter, total_count):
+        subsampled = []
+        for t in tokens:
+            f = counter[t] / total_count
+            p_keep = np.sqrt(self.subsample_t / f) + 0.1
+            p_keep = min(1.0, p_keep)
+            if np.random.rand() < p_keep:
+                subsampled.append(t)
+
+        return subsampled
 
 
     def _generate_pairs(self):
